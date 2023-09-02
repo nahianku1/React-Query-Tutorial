@@ -8,9 +8,11 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+
 import Home from "./components/Home.jsx";
 import ConventionalQuery from "./components/ConventionalQuery.jsx";
 import ReactQuery from "./components/ReactQuery.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 let router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -20,8 +22,15 @@ let router = createBrowserRouter(
     </Route>
   )
 );
+
+let queryClient = new QueryClient({
+    
+});
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
+  </QueryClientProvider>
 );

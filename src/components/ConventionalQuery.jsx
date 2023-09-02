@@ -7,7 +7,7 @@ function ConventionalQuery() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:400/data`)
+    fetch(`http://localhost:4000/data`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
